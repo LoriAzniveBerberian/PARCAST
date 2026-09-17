@@ -32,6 +32,9 @@ void setup() {
   delay(3000);
   Serial.println("PARcast E_s(PAR) Reference Station Starting...");
 
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, LOW);
+
   if (!rtc.begin()) {
     Serial.println("ERROR: RTC failed! Check wiring.");
     while (1);
@@ -103,5 +106,8 @@ void loop() {
     Serial.println("ERROR: Could not open log file!");
   }
 
-  delay(1000);
+  digitalWrite(LED_BUILTIN, HIGH);
+  delay(50);
+  digitalWrite(LED_BUILTIN, LOW);
+  delay(950);
 }
